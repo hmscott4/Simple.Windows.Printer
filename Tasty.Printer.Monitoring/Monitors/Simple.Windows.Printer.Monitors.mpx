@@ -1,5 +1,216 @@
 ﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-
+  <TypeDefinitions>
+    <MonitorTypes>
+      <UnitMonitorType ID="Simple.Windows.Printer.PrinterState.MT" Accessibility="Internal">
+        <MonitorTypeStates>
+          <MonitorTypeState ID="PrinterHealthy" NoDetection="false" />
+          <MonitorTypeState ID="PrinterWarning" NoDetection="false" />
+        </MonitorTypeStates>
+        <Configuration>
+          <xsd:element minOccurs="1" name="IntervalSeconds" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="PrinterName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="UnknownErrorDetection_Enabled" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="UnknownErrorDetection_Threshold" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="OtherErrorDetection_Enabled" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="OtherErrorDetection_Threshold" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="NoErrorErrorDetection_Enabled" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="NoErrorErrorDetection_Threshold" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="LowPaperErrorDetection_Enabled" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="LowPaperErrorDetection_Threshold" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="NoPaperErrorDetection_Enabled" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="NoPaperErrorDetection_Threshold" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="LowTonerErrorDetection_Enabled" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="LowTonerErrorDetection_Threshold" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="NoTonerErrorDetection_Enabled" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="NoTonerErrorDetection_Threshold" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="DoorOpenErrorDetection_Enabled" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="DoorOpenErrorDetection_Threshold" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="JammedErrorDetection_Enabled" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="JammedErrorDetection_Threshold" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="OfflineErrorDetection_Enabled" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="OfflineErrorDetection_Threshold" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="ServiceRequestedErrorDetection_Enabled" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="ServiceRequestedErrorDetection_Threshold" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="OutputBinFullErrorDetection_Enabled" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="OutputBinFullErrorDetection_Threshold" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="TimeoutSeconds" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Configuration>
+        <OverrideableParameters>
+          <OverrideableParameter ID="ScriptIntervalSeconds" Selector="$Config/IntervalSeconds$" ParameterType="int" />
+          <OverrideableParameter ID="UnknownErrorDetectionEnabled" Selector="$Config/UnknownErrorDetection_Enabled$" ParameterType="int" />
+          <OverrideableParameter ID="UnknownErrorDetectionThreshold" Selector="$Config/UnknownErrorDetection_Threshold$" ParameterType="int" />
+          <OverrideableParameter ID="OtherErrorDetectionEnabled" Selector="$Config/UnknownErrorDetection_Enabled$" ParameterType="int" />
+          <OverrideableParameter ID="OtherErrorDetectionThreshold" Selector="$Config/UnknownErrorDetection_Threshold$" ParameterType="int" />
+          <OverrideableParameter ID="NoErrorErrorDetectionEnabled" Selector="$Config/UnknownErrorDetection_Enabled$" ParameterType="int" />
+          <OverrideableParameter ID="NoErrorErrorDetectionThreshold" Selector="$Config/UnknownErrorDetection_Threshold$" ParameterType="int" />
+          <OverrideableParameter ID="LowPaperErrorDetectionEnabled" Selector="$Config/UnknownErrorDetection_Enabled$" ParameterType="int" />
+          <OverrideableParameter ID="LowPaperErrorDetectionThreshold" Selector="$Config/UnknownErrorDetection_Threshold$" ParameterType="int" />
+          <OverrideableParameter ID="NoPaperErrorDetectionEnabled" Selector="$Config/UnknownErrorDetection_Enabled$" ParameterType="int" />
+          <OverrideableParameter ID="NoPaperErrorDetectionThreshold" Selector="$Config/UnknownErrorDetection_Threshold$" ParameterType="int" />
+          <OverrideableParameter ID="LowTonerErrorDetectionEnabled" Selector="$Config/UnknownErrorDetection_Enabled$" ParameterType="int" />
+          <OverrideableParameter ID="LowTonerErrorDetectionThreshold" Selector="$Config/UnknownErrorDetection_Threshold$" ParameterType="int" />
+          <OverrideableParameter ID="NoTonerErrorDetectionEnabled" Selector="$Config/UnknownErrorDetection_Enabled$" ParameterType="int" />
+          <OverrideableParameter ID="NoTonerErrorDetectionThreshold" Selector="$Config/UnknownErrorDetection_Threshold$" ParameterType="int" />
+          <OverrideableParameter ID="DoorOpenErrorDetectionEnabled" Selector="$Config/UnknownErrorDetection_Enabled$" ParameterType="int" />
+          <OverrideableParameter ID="DoorOpenErrorDetectionThreshold" Selector="$Config/UnknownErrorDetection_Threshold$" ParameterType="int" />
+          <OverrideableParameter ID="JammedErrorDetectionEnabled" Selector="$Config/UnknownErrorDetection_Enabled$" ParameterType="int" />
+          <OverrideableParameter ID="JammedErrorDetectionThreshold" Selector="$Config/UnknownErrorDetection_Threshold$" ParameterType="int" />
+          <OverrideableParameter ID="OfflineErrorDetectionEnabled" Selector="$Config/UnknownErrorDetection_Enabled$" ParameterType="int" />
+          <OverrideableParameter ID="OfflineErrorDetectionThreshold" Selector="$Config/UnknownErrorDetection_Threshold$" ParameterType="int" />
+          <OverrideableParameter ID="ServiceRequestedErrorDetectionEnabled" Selector="$Config/UnknownErrorDetection_Enabled$" ParameterType="int" />
+          <OverrideableParameter ID="ServiceRequestedErrorDetectionThreshold" Selector="$Config/UnknownErrorDetection_Threshold$" ParameterType="int" />
+          <OverrideableParameter ID="OutputBinFullErrorDetectionEnabled" Selector="$Config/UnknownErrorDetection_Enabled$" ParameterType="int" />
+          <OverrideableParameter ID="OutputBinFullErrorDetectionThreshold" Selector="$Config/UnknownErrorDetection_Threshold$" ParameterType="int" />
+          <OverrideableParameter ID="TimeoutSeconds" Selector="$Config/TimeoutSeconds$" ParameterType="int" />
+        </OverrideableParameters>
+        <MonitorImplementation>
+          <MemberModules>
+            <DataSource ID="PrinterStateDS" TypeID="Simple.Windows.Printer.PrinterStateCheck.DS">
+              <IntervalSeconds>$Config/IntervalSeconds$</IntervalSeconds>
+              <PrinterName>$Config/PrinterName$</PrinterName>
+              <UnknownErrorDetection_Enabled>$Config/UnknownErrorDetection_Enabled$</UnknownErrorDetection_Enabled>
+              <UnknownErrorDetection_Threshold>$Config/UnknownErrorDetection_Threshold$</UnknownErrorDetection_Threshold>
+              <OtherErrorDetection_Enabled>$Config/OtherErrorDetection_Enabled$</OtherErrorDetection_Enabled>
+              <OtherErrorDetection_Threshold>$Config/OtherErrorDetection_Threshold$</OtherErrorDetection_Threshold>
+              <NoErrorErrorDetection_Enabled>$Config/NoErrorErrorDetection_Enabled$</NoErrorErrorDetection_Enabled>
+              <NoErrorErrorDetection_Threshold>$Config/NoErrorErrorDetection_Threshold$</NoErrorErrorDetection_Threshold>
+              <LowPaperErrorDetection_Enabled>$Config/LowPaperErrorDetection_Enabled$</LowPaperErrorDetection_Enabled>
+              <LowPaperErrorDetection_Threshold>$Config/LowPaperErrorDetection_Threshold$</LowPaperErrorDetection_Threshold>
+              <NoPaperErrorDetection_Enabled>$Config/NoPaperErrorDetection_Enabled$</NoPaperErrorDetection_Enabled>
+              <NoPaperErrorDetection_Threshold>$Config/NoPaperErrorDetection_Threshold$</NoPaperErrorDetection_Threshold>
+              <LowTonerErrorDetection_Enabled>$Config/LowTonerErrorDetection_Enabled$</LowTonerErrorDetection_Enabled>
+              <LowTonerErrorDetection_Threshold>$Config/LowTonerErrorDetection_Threshold$</LowTonerErrorDetection_Threshold>
+              <NoTonerErrorDetection_Enabled>$Config/NoTonerErrorDetection_Enabled$</NoTonerErrorDetection_Enabled>
+              <NoTonerErrorDetection_Threshold>$Config/NoTonerErrorDetection_Threshold$</NoTonerErrorDetection_Threshold>
+              <DoorOpenErrorDetection_Enabled>$Config/DoorOpenErrorDetection_Enabled$</DoorOpenErrorDetection_Enabled>
+              <DoorOpenErrorDetection_Threshold>$Config/DoorOpenErrorDetection_Threshold$</DoorOpenErrorDetection_Threshold>
+              <JammedErrorDetection_Enabled>$Config/JammedErrorDetection_Enabled$</JammedErrorDetection_Enabled>
+              <JammedErrorDetection_Threshold>$Config/JammedErrorDetection_Threshold$</JammedErrorDetection_Threshold>
+              <OfflineErrorDetection_Enabled>$Config/OfflineErrorDetection_Enabled$</OfflineErrorDetection_Enabled>
+              <OfflineErrorDetection_Threshold>$Config/OfflineErrorDetection_Threshold$</OfflineErrorDetection_Threshold>
+              <ServiceRequestedErrorDetection_Enabled>$Config/ServiceRequestedErrorDetection_Enabled$</ServiceRequestedErrorDetection_Enabled>
+              <ServiceRequestedErrorDetection_Threshold>$Config/ServiceRequestedErrorDetection_Threshold$</ServiceRequestedErrorDetection_Threshold>
+              <OutputBinFullErrorDetection_Enabled>$Config/OutputBinFullErrorDetection_Enabled$</OutputBinFullErrorDetection_Enabled>
+              <OutputBinFullErrorDetection_Threshold>$Config/OutputBinFullErrorDetection_Threshold$</OutputBinFullErrorDetection_Threshold>
+              <TimeoutSeconds>$Config/TimeoutSeconds$</TimeoutSeconds>
+            </DataSource>
+            <ProbeAction ID="PassThru" TypeID="System!System.PassThroughProbe" />
+            <ProbeAction ID="OnDemand" TypeID="Simple.Windows.Printer.PrinterStateCheck.PA">
+              <UnknownErrorDetection_Enabled>$Config/UnknownErrorDetection_Enabled$</UnknownErrorDetection_Enabled>
+              <UnknownErrorDetection_Threshold>$Config/UnknownErrorDetection_Threshold$</UnknownErrorDetection_Threshold>
+              <OtherErrorDetection_Enabled>$Config/OtherErrorDetection_Enabled$</OtherErrorDetection_Enabled>
+              <OtherErrorDetection_Threshold>$Config/OtherErrorDetection_Threshold$</OtherErrorDetection_Threshold>
+              <NoErrorErrorDetection_Enabled>$Config/NoErrorErrorDetection_Enabled$</NoErrorErrorDetection_Enabled>
+              <NoErrorErrorDetection_Threshold>$Config/NoErrorErrorDetection_Threshold$</NoErrorErrorDetection_Threshold>
+              <LowPaperErrorDetection_Enabled>$Config/LowPaperErrorDetection_Enabled$</LowPaperErrorDetection_Enabled>
+              <LowPaperErrorDetection_Threshold>$Config/LowPaperErrorDetection_Threshold$</LowPaperErrorDetection_Threshold>
+              <NoPaperErrorDetection_Enabled>$Config/NoPaperErrorDetection_Enabled$</NoPaperErrorDetection_Enabled>
+              <NoPaperErrorDetection_Threshold>$Config/NoPaperErrorDetection_Threshold$</NoPaperErrorDetection_Threshold>
+              <LowTonerErrorDetection_Enabled>$Config/LowTonerErrorDetection_Enabled$</LowTonerErrorDetection_Enabled>
+              <LowTonerErrorDetection_Threshold>$Config/LowTonerErrorDetection_Threshold$</LowTonerErrorDetection_Threshold>
+              <NoTonerErrorDetection_Enabled>$Config/NoTonerErrorDetection_Enabled$</NoTonerErrorDetection_Enabled>
+              <NoTonerErrorDetection_Threshold>$Config/NoTonerErrorDetection_Threshold$</NoTonerErrorDetection_Threshold>
+              <DoorOpenErrorDetection_Enabled>$Config/DoorOpenErrorDetection_Enabled$</DoorOpenErrorDetection_Enabled>
+              <DoorOpenErrorDetection_Threshold>$Config/DoorOpenErrorDetection_Threshold$</DoorOpenErrorDetection_Threshold>
+              <JammedErrorDetection_Enabled>$Config/JammedErrorDetection_Enabled$</JammedErrorDetection_Enabled>
+              <JammedErrorDetection_Threshold>$Config/JammedErrorDetection_Threshold$</JammedErrorDetection_Threshold>
+              <OfflineErrorDetection_Enabled>$Config/OfflineErrorDetection_Enabled$</OfflineErrorDetection_Enabled>
+              <OfflineErrorDetection_Threshold>$Config/OfflineErrorDetection_Threshold$</OfflineErrorDetection_Threshold>
+              <ServiceRequestedErrorDetection_Enabled>$Config/ServiceRequestedErrorDetection_Enabled$</ServiceRequestedErrorDetection_Enabled>
+              <ServiceRequestedErrorDetection_Threshold>$Config/ServiceRequestedErrorDetection_Threshold$</ServiceRequestedErrorDetection_Threshold>
+              <OutputBinFullErrorDetection_Enabled>$Config/OutputBinFullErrorDetection_Enabled$</OutputBinFullErrorDetection_Enabled>
+              <OutputBinFullErrorDetection_Threshold>$Config/OutputBinFullErrorDetection_Threshold$</OutputBinFullErrorDetection_Threshold>
+              <TimeoutSeconds>$Config/TimeoutSeconds$</TimeoutSeconds>
+            </ProbeAction>
+            <ConditionDetection ID="CDHealthy" TypeID="System!System.ExpressionFilter">
+              <Expression>
+                <And>
+                  <Expression>
+                    <SimpleExpression>
+                      <ValueExpression>
+                        <XPathQuery Type="String">Property[@Name='State']</XPathQuery>
+                      </ValueExpression>
+                      <Operator>Equal</Operator>
+                      <ValueExpression>
+                        <Value Type="String">OK</Value>
+                      </ValueExpression>
+                    </SimpleExpression>
+                  </Expression>
+                  <Expression>
+                    <SimpleExpression>
+                      <ValueExpression>
+                        <XPathQuery Type="String">Property[@Name='PrinterName']</XPathQuery>
+                      </ValueExpression>
+                      <Operator>Equal</Operator>
+                      <ValueExpression>
+                        <Value Type="String">$Config/PrinterName$</Value>
+                      </ValueExpression>
+                    </SimpleExpression>
+                  </Expression>
+                </And>
+              </Expression>
+            </ConditionDetection>
+            <ConditionDetection ID="CDWarning" TypeID="System!System.ExpressionFilter">
+              <Expression>
+                <And>
+                  <Expression>
+                    <SimpleExpression>
+                      <ValueExpression>
+                        <XPathQuery Type="String">Property[@Name='State']</XPathQuery>
+                      </ValueExpression>
+                      <Operator>Equal</Operator>
+                      <ValueExpression>
+                        <Value Type="String">WARNING</Value>
+                      </ValueExpression>
+                    </SimpleExpression>
+                  </Expression>
+                  <Expression>
+                    <SimpleExpression>
+                      <ValueExpression>
+                        <XPathQuery Type="String">Property[@Name='PrinterName']</XPathQuery>
+                      </ValueExpression>
+                      <Operator>Equal</Operator>
+                      <ValueExpression>
+                        <Value Type="String">$Config/PrinterName$</Value>
+                      </ValueExpression>
+                    </SimpleExpression>
+                  </Expression>
+                </And>
+              </Expression>
+            </ConditionDetection>
+          </MemberModules>
+          <RegularDetections>
+            <RegularDetection MonitorTypeStateID="PrinterHealthy">
+              <Node ID="CDHealthy">
+                <Node ID="PrinterStateDS" />
+              </Node>
+            </RegularDetection>
+            <RegularDetection MonitorTypeStateID="PrinterWarning">
+              <Node ID="CDWarning">
+                <Node ID="PrinterStateDS" />
+              </Node>
+            </RegularDetection>
+          </RegularDetections>
+          <OnDemandDetections>
+            <OnDemandDetection MonitorTypeStateID="PrinterHealthy">
+              <Node ID="CDHealthy">
+                <Node ID="OnDemand">
+                  <Node ID="PassThru" />
+                </Node>
+              </Node>
+            </OnDemandDetection>
+            <OnDemandDetection MonitorTypeStateID="PrinterWarning">
+              <Node ID="CDWarning">
+                <Node ID="OnDemand">
+                  <Node ID="PassThru" />
+                </Node>
+              </Node>
+            </OnDemandDetection>
+          </OnDemandDetections>
+        </MonitorImplementation>
+      </UnitMonitorType>
+    </MonitorTypes>  
+  </TypeDefinitions>
   <Monitoring>
     <Monitors>
       <UnitMonitor ID="Simple.Windows.Printer.SpoolerService.Monitor" Accessibility="Public" Enabled="true" Target="Simple.Windows.Printer.PrintServer.Role" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" TypeID="Windows!Microsoft.Windows.CheckNTServiceStateMonitorType" ConfirmDelivery="false">

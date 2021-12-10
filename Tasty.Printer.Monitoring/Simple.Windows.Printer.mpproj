@@ -38,6 +38,9 @@
     <Compile Include="Language packs\Simple.Windows.Printer.Language.en-us.mpx">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Modules\Simple.Windows.Printer.Modules.mpx">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Monitors\Simple.Windows.Printer.Monitors.mpx">
       <SubType>Code</SubType>
     </Compile>
@@ -79,6 +82,7 @@
     <Folder Include="Monitors" />
     <Folder Include="Language packs" />
     <Folder Include="Discoveries" />
+    <Folder Include="Modules" />
     <Folder Include="Views" />
     <Folder Include="Rules" />
     <Folder Include="Tasks" />
