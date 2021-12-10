@@ -1,0 +1,155 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Monitoring>
+
+    <Discoveries>
+      <Discovery ID="Simple.Windows.Printer.PrintServer.Role.Discovery" Target="Windows!Microsoft.Windows.Server.Computer" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+        <Category>Discovery</Category>
+        <DiscoveryTypes>
+          <DiscoveryClass TypeID="Simple.Windows.Printer.PrintServer.Role">
+            <Property TypeID="System!System.Entity" PropertyID="DisplayName" />
+          </DiscoveryClass>
+        </DiscoveryTypes>
+        <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.TimedScript.DiscoveryProvider">
+          <!--Set to something aggressive for testing, or normally 3600-->
+          <IntervalSeconds>43200</IntervalSeconds>
+          <SyncTime />
+          <ScriptName>Windows20XX.PrintServer.Role.Discovery.vbs</ScriptName>
+          <Arguments>$MPElement$ $Target/Id$ $Target/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$ $Target/Property[Type="Windows!Microsoft.Windows.Computer"]/NetbiosComputerName$</Arguments>
+          <ScriptBody>
+            SetLocale("en-us")
+
+            Dim objWMINS, colItems, oPrinter, ErrorStateToString, oAPI, oExec, LOgEVentCOmmand, oArgs, SourceID
+            Dim ManagedEntityID, TargetComputer, oInst, oDiscoveryData, NetbiosName, oService, SpoolerStarted
+            Dim PrintServer, OSVersion
+
+            Set oArgs = wscript.arguments
+            SourceId = oArgs(0)
+            ManagedEntityID = oArgs(1)
+            TargetComputer = oArgs(2)
+            NetbiosName = oArgs(3)
+            OSVersion = oArgs(4)
+
+            Set oAPI = CreateObject("MOM.ScriptAPI")
+            Set oDiscoveryData = oAPI.CreateDiscoveryData(0, SourceId, ManagedEntityId)
+            Set objWMINS = GetObject("winmgmts://./root/cimv2")
+            Set colItems = objWMINS.ExecQuery("Select * from Win32_Service")
+
+            SpoolerStarted = 0
+            PrintServer = 0
+
+            For each oService in colItems
+            If oService.Name = "Spooler" and oService.Started = "True" Then
+            SpoolerStarted = 1
+            End If
+            Next
+
+            If SpoolerStarted = 1 Then
+            Set colItems = objWMINS.ExecQuery("Select * from Win32_Printer")
+            For Each oPrinter in colItems
+            'SET TO False and 0 FOR TESTING, True and 1 FOR PRODUCTION
+            If oPrinter.Shared = "True" or oPrinter.Shared = 1 Then
+            PrintServer = 1
+            End If
+            Next
+            End If
+
+            If SpoolerStarted = 1 and PrintServer = 1 Then
+
+
+            Set oInst = oDiscoveryData.CreateClassInstance("$MPElement[Name='Simple.Windows.Printer.PrintServer.Role']$")
+
+
+            Call oInst.AddProperty("$MPElement[Name='Windows!Microsoft.Windows.Computer']/PrincipalName$",TargetComputer)
+            Call oInst.AddProperty("$MPElement[Name='System!System.Entity']/DisplayName$",TargetComputer)
+            Call oDiscoveryData.AddInstance(oInst)
+            End If
+
+            Call oAPI.Return(oDiscoveryData)
+          </ScriptBody>
+          <TimeoutSeconds>300</TimeoutSeconds>
+        </DataSource>
+      </Discovery>
+      <Discovery ID="Simple.Windows.Printer.PrintServer.Printer.Discovery" Target="Simple.Windows.Printer.PrintServer.Role" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+        <Category>Discovery</Category>
+        <DiscoveryTypes>
+          <DiscoveryClass TypeID="Simple.Windows.Printer.PrintServer.Printer">
+            <Property TypeID="Simple.Windows.Printer.PrintServer.Printer" PropertyID="PrinterName" />
+            <Property TypeID="Simple.Windows.Printer.PrintServer.Printer" PropertyID="PrintServerHost" />
+            <Property TypeID="Simple.Windows.Printer.PrintServer.Printer" PropertyID="PortName" />
+            <Property TypeID="Simple.Windows.Printer.PrintServer.Printer" PropertyID="Location" />
+            <Property TypeID="Simple.Windows.Printer.PrintServer.Printer" PropertyID="Model" />
+            <Property TypeID="System!System.Entity" PropertyID="DisplayName" />
+          </DiscoveryClass>
+        </DiscoveryTypes>
+        <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.TimedScript.DiscoveryProvider">
+          <!-- Set to something aggressive for testing or normally 3600-->
+          <IntervalSeconds>43200</IntervalSeconds>
+          <SyncTime></SyncTime>
+          <ScriptName>Windows.PrintServer.Printer.Discovery.vbs</ScriptName>
+          <Arguments>$MPElement$ $Target/Id$ $Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$ $Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/NetbiosComputerName$</Arguments>
+          <ScriptBody>
+            ' Windows.PrintServer.Printer.Discovery.vbs
+
+            SetLocale("en-us")
+
+            Dim objWMIPrinters
+            Dim colItems
+            Dim oPrinter
+            Dim ErrorStateToString
+            Dim oAPI
+            Dim oExec
+            Dim LOgEVentCOmmand
+            Dim oArgs
+            Dim SourceID
+            Dim ManagedEntityID
+            Dim TargetComputer
+            Dim oInst
+            Dim oDiscoveryData
+            Dim NetbiosName
+            Dim OSVersion
+            'Prevents failure on error - it is possible some discovery data will not be present for some printers
+            'This clause will allow skipping of those errors to add the discovery data that is present.
+            On Error Resume Next
+
+            Set oArgs = wscript.arguments
+            SourceId = oArgs(0)
+            ManagedEntityID = oArgs(1)
+            TargetComputer = oArgs(2)
+            NetbiosName = oArgs(3)
+            OSVersion = oArgs(4)
+
+            Set oAPI = CreateObject("MOM.ScriptAPI")
+            Set oDiscoveryData = oAPI.CreateDiscoveryData(0, SourceId, ManagedEntityId)
+            Set objWMIPrinters = GetObject("winmgmts://./root/cimv2")
+            Set colItems = objWMIPrinters.ExecQuery("Select * from Win32_Printer")
+            'Set WshShell = CreateObject("Wscript.Shell")
+
+            For each oPrinter in colItems
+            ' SET TO 1 FOR TESTING. REVERT TO 0 FOR PRODUCTION
+            If oPrinter.Shared = 0 Then
+            wscript.echo "Printer " &amp; oPrinter.name &amp; " is not shared. Ignored."
+            Else
+            wscript.echo "Printer " &amp; oPrinter.name &amp; " - " &amp; ErrorStateToString
+
+            Set oInst = oDiscoveryData.CreateClassInstance("$MPElement[Name='Simple.Windows.Printer.PrintServer.Printer']$")
+            Call oInst.AddProperty("$MPElement[Name='Simple.Windows.Printer.PrintServer.Printer']/PrinterName$", oPrinter.name)
+            Call oInst.AddProperty("$MPElement[Name='Simple.Windows.Printer.PrintServer.Printer']/PrintServerHost$", targetcomputer)
+            Call oInst.AddProperty("$MPElement[Name='Simple.Windows.Printer.PrintServer.Printer']/PortName$", oPrinter.PortName)
+            Call oInst.AddProperty("$MPElement[Name='Simple.Windows.Printer.PrintServer.Printer']/Location$", oPrinter.Location)
+            Call oInst.AddProperty("$MPElement[Name='Simple.Windows.Printer.PrintServer.Printer']/Model$", oPrinter.DriverName)
+
+
+            Call oInst.AddProperty("$MPElement[Name='Windows!Microsoft.Windows.Computer']/PrincipalName$", TargetComputer)
+            Call oInst.AddProperty("$MPElement[Name='System!System.Entity']/DisplayName$", oPrinter.name)
+            Call oDiscoveryData.AddInstance(oInst)
+            End If
+            Next
+
+            Call oAPI.Return(oDiscoveryData)
+          </ScriptBody>
+          <TimeoutSeconds>900</TimeoutSeconds>
+        </DataSource>
+      </Discovery>
+    </Discoveries>  
+  </Monitoring>
+</ManagementPackFragment>

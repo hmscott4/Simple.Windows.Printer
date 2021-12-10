@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31229.75
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D4B43EB3-688B-4EEE-86BD-088F0B28ABB3}") = "Simple.Windows.Printer", "Tasty.Printer.Monitoring\Simple.Windows.Printer.mpproj", "{6A47D9C3-913A-45BC-A2D7-CFA7D4A8597E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A47D9C3-913A-45BC-A2D7-CFA7D4A8597E}.Debug|x86.ActiveCfg = Debug|x86
+		{6A47D9C3-913A-45BC-A2D7-CFA7D4A8597E}.Debug|x86.Build.0 = Debug|x86
+		{6A47D9C3-913A-45BC-A2D7-CFA7D4A8597E}.Release|x86.ActiveCfg = Release|x86
+		{6A47D9C3-913A-45BC-A2D7-CFA7D4A8597E}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D691597-F155-4992-9D78-03E149E9336F}
+	EndGlobalSection
+EndGlobal

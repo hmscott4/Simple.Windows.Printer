@@ -1,0 +1,72 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <Monitoring>
+    <Monitors>
+      <UnitMonitor ID="Simple.Windows.Printer.SpoolerService.Monitor" Accessibility="Public" Enabled="true" Target="Simple.Windows.Printer.PrintServer.Role" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" TypeID="Windows!Microsoft.Windows.CheckNTServiceStateMonitorType" ConfirmDelivery="false">
+        <Category>AvailabilityHealth</Category>
+        <AlertSettings AlertMessage="Simple.Windows.Printer.SpoolerService.Monitor.AlertMessage">
+          <AlertOnState>Error</AlertOnState>
+          <AutoResolve>true</AutoResolve>
+          <AlertPriority>Normal</AlertPriority>
+          <AlertSeverity>MatchMonitorHealth</AlertSeverity>
+        </AlertSettings>
+        <OperationalStates>
+          <OperationalState ID="Running" MonitorTypeStateID="Running" HealthState="Success" />
+          <OperationalState ID="NotRunning" MonitorTypeStateID="NotRunning" HealthState="Error" />
+        </OperationalStates>
+        <Configuration>
+          <ComputerName>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/NetworkName$</ComputerName>
+          <ServiceName>Spooler</ServiceName>
+          <CheckStartupType>true</CheckStartupType>
+        </Configuration>
+      </UnitMonitor>
+      <UnitMonitor ID="Simple.Windows.Printer.PrintServer.Printer.Monitor" Accessibility="Public" Enabled="true" Target="Simple.Windows.Printer.PrintServer.Printer" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" TypeID="Simple.Windows.Printer.PrinterState.MT" ConfirmDelivery="false">
+        <Category>AvailabilityHealth</Category>
+        <AlertSettings AlertMessage="Simple.Windows.Printer.PrintServer.Printer.Monitor.AlertMessage">
+          <AlertOnState>Warning</AlertOnState>
+          <AutoResolve>true</AutoResolve>
+          <AlertPriority>Normal</AlertPriority>
+          <AlertSeverity>MatchMonitorHealth</AlertSeverity>
+          <AlertParameters>
+            <AlertParameter1>$Data/Context/DataItem/Property[@Name='Error Condition']$</AlertParameter1>
+            <AlertParameter2>$Data/Context/DataItem/Property[@Name='PrinterName']$</AlertParameter2>
+            <AlertParameter3>$Target/Property[Type="Simple.Windows.Printer.PrintServer.Printer"]/PrintServerHost$</AlertParameter3>
+          </AlertParameters>
+        </AlertSettings>
+        <OperationalStates>
+          <OperationalState ID="PrinterHealthy" MonitorTypeStateID="PrinterHealthy" HealthState="Success" />
+          <OperationalState ID="PrinterWarning" MonitorTypeStateID="PrinterWarning" HealthState="Warning" />
+        </OperationalStates>
+        <Configuration>
+          <IntervalSeconds>3600</IntervalSeconds>
+          <PrinterName>$Target/Property[Type="Simple.Windows.Printer.PrintServer.Printer"]/PrinterName$</PrinterName>
+          <UnknownErrorDetection_Enabled>1</UnknownErrorDetection_Enabled>
+          <UnknownErrorDetection_Threshold>0</UnknownErrorDetection_Threshold>
+          <OtherErrorDetection_Enabled>1</OtherErrorDetection_Enabled>
+          <OtherErrorDetection_Threshold>0</OtherErrorDetection_Threshold>
+          <NoErrorErrorDetection_Enabled>0</NoErrorErrorDetection_Enabled>
+          <NoErrorErrorDetection_Threshold>0</NoErrorErrorDetection_Threshold>
+          <LowPaperErrorDetection_Enabled>0</LowPaperErrorDetection_Enabled>
+          <LowPaperErrorDetection_Threshold>0</LowPaperErrorDetection_Threshold>
+          <NoPaperErrorDetection_Enabled>1</NoPaperErrorDetection_Enabled>
+          <NoPaperErrorDetection_Threshold>2</NoPaperErrorDetection_Threshold>
+          <LowTonerErrorDetection_Enabled>0</LowTonerErrorDetection_Enabled>
+          <LowTonerErrorDetection_Threshold>0</LowTonerErrorDetection_Threshold>
+          <NoTonerErrorDetection_Enabled>1</NoTonerErrorDetection_Enabled>
+          <NoTonerErrorDetection_Threshold>2</NoTonerErrorDetection_Threshold>
+          <DoorOpenErrorDetection_Enabled>1</DoorOpenErrorDetection_Enabled>
+          <DoorOpenErrorDetection_Threshold>45</DoorOpenErrorDetection_Threshold>
+          <JammedErrorDetection_Enabled>1</JammedErrorDetection_Enabled>
+          <JammedErrorDetection_Threshold>2</JammedErrorDetection_Threshold>
+          <OfflineErrorDetection_Enabled>1</OfflineErrorDetection_Enabled>
+          <OfflineErrorDetection_Threshold>2</OfflineErrorDetection_Threshold>
+          <ServiceRequestedErrorDetection_Enabled>1</ServiceRequestedErrorDetection_Enabled>
+          <ServiceRequestedErrorDetection_Threshold>15</ServiceRequestedErrorDetection_Threshold>
+          <OutputBinFullErrorDetection_Enabled>0</OutputBinFullErrorDetection_Enabled>
+          <OutputBinFullErrorDetection_Threshold>0</OutputBinFullErrorDetection_Threshold>
+          <TimeoutSeconds>900</TimeoutSeconds>
+        </Configuration>
+      </UnitMonitor>
+    </Monitors>
+  </Monitoring>
+</ManagementPackFragment>

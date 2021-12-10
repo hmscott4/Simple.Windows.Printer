@@ -1,0 +1,725 @@
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Simple.Windows.Printer.PrintServer.Role.Discovery">
+          <Name>Simple.Windows.Printer.PrintServer.Role.Discovery</Name>
+          <Description>Description for the new discovery.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrintServer.Printer.Discovery">
+          <Name>Simple.Windows.Printer.PrintServer.Printer.Discovery</Name>
+          <Description>Description for the new discovery.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.SpoolerService.Monitor">
+          <Name>Spooler Service Monitor</Name>
+          <Description>Description for the new unit monitor.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.SpoolerService.Monitor.AlertMessage">
+          <Name>Spooler Service Monitor Alert</Name>
+          <Description>Spooler server not running. Please see the alert context for details.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.SpoolerService.Monitor" SubElementID="Running">
+          <Name>Running</Name>
+          <Description>Running</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.SpoolerService.Monitor" SubElementID="NotRunning">
+          <Name>NotRunning</Name>
+          <Description>NotRunning</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrintServer.Printer.Monitor">
+          <Name>Windows Server  Print Server Printer State</Name>
+          <Description>This monitor will check the state of printers attached to discovered print servers in the environment.  The script that drives this monitor supports cookdown and has been tested on print servers hosting upwards of 1000 printers.  The monitor by default runs once per hour. Adjust frequency with caution as running more frequently may cause performance problems in large environments.  The script checks 12 unique problem conditions as follows: Unknown Error;  Other Error;  No Error;  Low Paper;  No Paper;  Low Toner;  No Toner;  Door Open;  Jammed;  Offline;  Service Requested;  Output Bin Full.  Each condition can be enabled or disabled individually.  In addition, each condition can be configured with a unique threshold that indicates how long the condition should be allowed to persist before flagging an unhealthy condition.  This configuration allows for setting of timers per condition to meet individual business requirements.  The specific default configurations are seen on the configuration tab for the monitor.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrintServer.Printer.Monitor" SubElementID="PrinterHealthy">
+          <Name>PrinterHealthy</Name>
+          <Description>PrinterHealthy</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrintServer.Printer.Monitor" SubElementID="PrinterWarning">
+          <Name>PrinterWarning</Name>
+          <Description>PrinterWarning</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrintServer.Printer.Monitor.AlertMessage">
+          <Name>Windows Server Print Server Printer State Alert</Name>
+          <Description>
+            {0} | Printer {1} on {2} is {0}
+
+
+            Additional Knowledge:
+            This monitor will check the state of printers attached to discovered print servers in the environment.  The script that drives this monitor supports cookdown and has been tested on print servers hosting upwards of 1000 printers.  The monitor by default runs once per hour. Adjust frequency with caution as running more frequently may cause performance problems in large environments.
+            The script checks 12 unique problem conditions as follows:
+            Unknown Error
+            Other Error
+            No Error
+            Low Paper
+            No Paper
+            Low Toner
+            No Toner
+            Door Open
+            Jammed
+            Offline
+            Service Requested
+            Output Bin Full
+
+            Each condition can be enabled or disabled individually.  In addition, each condition can be configured with a unique threshold that indicates how long the condition should be allowed to persist before flagging an unhealthy condition.  This configuration allows for setting of timers per condition to meet individual business repirements.  The specific default configurations are seen on the configuration tab for the monitor.
+
+          </Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer">
+          <Name>Tasty Printer Monitoring</Name>
+          <Description>
+            Enhanced monitoring of printers beyond that which you get from the standard Microsoft Printer Management Pack(s) that are available here at the time of this writing: http://social.technet.microsoft.com/wiki/contents/articles/16174.microsoft-management-packs.aspx .
+            This is an adaptation of an original work by Steve Rachui found here: https://blogs.msdn.microsoft.com/steverac/2010/12/04/focusing-on-the-printer-printer-monitoring-mp-supplement/ .
+            The script for this datasource takes 24 command line parameters to control the error detection and flow of alerting.  The script will detect 12 unique printer error conditions.  By passing command line parameters you can control which of these error conditions are detected and whether or not an alert is raised on the problem immediately or only after a certain wait time.  So, on the command line the first two parameters map to condition 1, the second 2 parameters map to condition 2 and so on for all 12 conditions.  The first parameter of each condition is a 0=disabled or a 1=enabled followed by a value to indicate the alert wait time in terms of hours.  If an error condition is to be disabled (0) then set the alert wait time to 0 (or any numeric value) as it will not be processed.
+          </Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterStateCheck.DS">
+          <Name>Printer State Check Data Source</Name>
+          <Description>The script for this datasource takes 24 command line parameters to control the error detection and flow of alerting.  The script will detect 12 unique printer error conditions.  By passing command line parameters you can control which of these error conditions are detected and whether or not an alert is raised on the problem immediately or only after a certain wait time.  So, on the command line the first two parameters map to condition 1, the second 2 parameters map to condition 2 and so on for all 12 conditions.  The first parameter of each condition is a 0=disabled or a 1=enabled followed by a value to indicate the alert wait time in terms of hours.  If an error condition is to be disabled (0) then set the alert wait time to 0 (or any numeric value) as it will not be processed.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT">
+          <Name>Printer State Monitor Type</Name>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.Printer.Views.Folder">
+          <Name>Tasty Printer Monitoring</Name>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.Printer.Alert.Categories">
+          <Name>Printer Alerts - Categorized</Name>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.Simple.Windows.Printer.PrinterMonitorAlerts.AlertView">
+          <Name>Printer Alerts: All Active Alerts</Name>
+          <Description>Description for the new view</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.Simple.Windows.Printer.PrinterMonitorAlerts.Jammed.AlertView">
+          <Name>Printer: Jammed Alert</Name>
+          <Description>Description for the new view</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.Simple.Windows.Printer.PrinterMonitorAlerts.DoorOpen.AlertView">
+          <Name>Printer: Door Open Alert</Name>
+          <Description>Description for the new view</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.Simple.Windows.Printer.PrinterMonitorAlerts.LowPaper.AlertView">
+          <Name>Printer: Low Paper Alert</Name>
+          <Description>Description for the new view</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.Simple.Windows.Printer.PrinterMonitorAlerts.LowToner.AlertView">
+          <Name>Printer: Low Toner Alert</Name>
+          <Description>Description for the new view</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.Simple.Windows.Printer.PrinterMonitorAlerts.OutputBin.AlertView">
+          <Name>Printer: Output Bin Alert</Name>
+          <Description>Description for the new view</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.Simple.Windows.Printer.PrinterMonitorAlerts.NoError.AlertView">
+          <Name>Printer: No Error Alert</Name>
+          <Description>Description for the new view</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.Simple.Windows.Printer.PrinterMonitorAlerts.Other.AlertView">
+          <Name>Printer: Other Alert</Name>
+          <Description>Description for the new view</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.Simple.Windows.Printer.PrinterMonitorAlerts.NoPaper.AlertView">
+          <Name>Printer: No Paper Alert</Name>
+          <Description>Description for the new view</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.Simple.Windows.Printer.PrinterMonitorAlerts.Unknown.AlertView">
+          <Name>Printer: Unknown Alert</Name>
+          <Description>Description for the new view</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.Simple.Windows.Printer.PrinterMonitorAlerts.NoToner.AlertView">
+          <Name>Printer: No Toner Alert</Name>
+          <Description>Description for the new view</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.Simple.Windows.Printer.PrinterMonitorAlerts.Offline.AlertView">
+          <Name>Printer: Offline Alert</Name>
+          <Description>Description for the new view</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.Simple.Windows.Printer.PrinterMonitorAlerts.ServiceRequired.AlertView">
+          <Name>Printer: Service Required Alert</Name>
+          <Description>Description for the new view</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrintServer.Role.State.View">
+          <Name>Windows  Print Servers</Name>
+          <Description>Description for the new view</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrintServer.Printer.State.View">
+          <Name>Windows  Printers</Name>
+          <Description>State view for Windows  Printers hosted by the Windows  Print Server Role</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrintServer.Role">
+          <Name>Windows PrintServer Role</Name>
+          <Description></Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrintServer.Printer">
+          <Name>Windows PrintServer Printer</Name>
+          <Description></Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrintServer.Printer" SubElementID="Location">
+          <Name>Location</Name>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrintServer.Printer" SubElementID="Model">
+          <Name>Model</Name>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrintServer.Printer" SubElementID="PortName">
+          <Name>Port Name</Name>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrintServer.Printer" SubElementID="PrinterName">
+          <Name>Printer Name</Name>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrintServer.Printer" SubElementID="PrintServerHost">
+          <Name>Print Server Host</Name>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="LowPaperErrorDetectionEnabled">
+          <Name>Low Paper Error Detection Enabled</Name>
+          <Description>Enable or Disable Low Paper Error Detection</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="LowPaperErrorDetectionThreshold">
+          <Name>Low Paper Error Detection Threshold</Name>
+          <Description>Threshold value for Low Papert Error Detection</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="NoPaperErrorDetectionEnabled">
+          <Name>No Paper Error Detection Enabled</Name>
+          <Description>No Paper Error Detection Enabled</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="NoPaperErrorDetectionThreshold">
+          <Name>No Paper Error Detection Threshold</Name>
+          <Description>No Paper Error Detection Threshold Value</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrintServer.Role" SubElementID="DisplayName">
+          <Name>Windows Print Server Role</Name>
+          <Description>Windows Server Print Server</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterStateCheck.PA">
+          <Name>Windows Printer Printer State Check PA</Name>
+          <Description>Windows Printer Printer State Check</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="ScriptIntervalSeconds">
+          <Name>Script Interval (Seconds)</Name>
+          <Description>Script Interval (Seconds)</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="UnknownErrorDetectionEnabled">
+          <Name>Unknown Error Detection Enabled</Name>
+          <Description>Unknown Error Detection Enabled</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="UnknownErrorDetectionThreshold">
+          <Name>Unknown Error Detection Threshold</Name>
+          <Description>Unknown Error Detection Threshold</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="OtherErrorDetectionEnabled">
+          <Name>Other Error Detection Enabled</Name>
+          <Description>Other Error Detection Enabled</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="OtherErrorDetectionThreshold">
+          <Name>Other Error Detection Threshold</Name>
+          <Description>Other Error Detection Threshold</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="NoErrorErrorDetectionEnabled">
+          <Name>No Error Detection Enabled</Name>
+          <Description>No Error Detection Enabled</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="NoErrorErrorDetectionThreshold">
+          <Name>No Error Error Detection Threshold</Name>
+          <Description>No Error Error Detection Threshold</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="LowTonerErrorDetectionEnabled">
+          <Name>Low Toner Error Detection Enabled</Name>
+          <Description>Low Toner Error Detection Enabled</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="LowTonerErrorDetectionThreshold">
+          <Name>Low Toner Error Detection Threshold</Name>
+          <Description>Low Toner Error Detection Threshold</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="NoTonerErrorDetectionEnabled">
+          <Name>No Toner Error Detection Enabled</Name>
+          <Description>No Toner Error Detection Enabled</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="NoTonerErrorDetectionThreshold">
+          <Name>No Toner Error Detection Threshold</Name>
+          <Description>No Toner Error Detection Threshold</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="DoorOpenErrorDetectionEnabled">
+          <Name>Door Open Error Detection Enabled</Name>
+          <Description>Door Open Error Detection Enabled</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="DoorOpenErrorDetectionThreshold">
+          <Name>Door Open Error Detection Threshold</Name>
+          <Description>Door Open Error Detection Threshold</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="JammedErrorDetectionEnabled">
+          <Name>Jammed Error Detection Enabled</Name>
+          <Description>Jammed Error Detection Enabled</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="JammedErrorDetectionThreshold">
+          <Name>Jammed Error Detection Threshold</Name>
+          <Description>Jammed Error Detection Threshold</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="OfflineErrorDetectionEnabled">
+          <Name>Offline Error Detection Enabled</Name>
+          <Description>Offline Error Detection Enabled</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="OfflineErrorDetectionThreshold">
+          <Name>Offline Error Detection Threshold</Name>
+          <Description>Offline Error Detection Threshold</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="ServiceRequestedErrorDetectionEnabled">
+          <Name>Service Requested Error Detection Enabled</Name>
+          <Description>Service Requested Error Detection Enabled</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="ServiceRequestedErrorDetectionThreshold">
+          <Name>Service Requested Error Detection Threshold</Name>
+          <Description>Service Requested Error Detection Threshold</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="OutputBinFullErrorDetectionEnabled">
+          <Name>Output Bin Full Error Detection Enabled</Name>
+          <Description>Output Bin Full Error Detection Enabled</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="OutputBinFullErrorDetectionThreshold">
+          <Name>Output Bin Full Error Detection Threshold</Name>
+          <Description>Output Bin Full Error Detection Threshold</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrinterState.MT" SubElementID="TimeoutSeconds">
+          <Name>Timeout Seconds</Name>
+          <Description>Script Timeout (Seconds)</Description>
+        </DisplayString>
+        <DisplayString ElementID="Simple.Windows.Printer.PrintServer.Role.hosts.Windows.PrintServer.Printer">
+          <Name>Print Server hosts Printer</Name>
+          <Description>Print Server hosts Printer</Description>
+        </DisplayString>
+      </DisplayStrings>
+      <KnowledgeArticles>
+        <KnowledgeArticle ElementID="Simple.Windows.Printer" Visible="true">
+          <MamlContent>
+            <maml:section xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+              <maml:title>Summary</maml:title>
+              <maml:para>
+                Enhanced monitoring of printers beyond that which you get from the standard Microsoft Printer Management Pack(s) that are available here at the time of this writing: http://social.technet.microsoft.com/wiki/contents/articles/16174.microsoft-management-packs.aspx
+              </maml:para>
+            </maml:section>
+            <maml:section xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+              <maml:title>Author</maml:title>
+              <maml:para>Tyson Paul</maml:para>
+              <maml:list>
+                <maml:listItem>
+                  <maml:para>
+                    <maml:navigationLink>
+                      <maml:linkText>https://blogs.msdn.microsoft.com/tysonpaul</maml:linkText>
+                      <maml:uri href="https://blogs.msdn.microsoft.com/tysonpaul" />
+                    </maml:navigationLink>
+                  </maml:para>
+                </maml:listItem>
+              </maml:list>
+            </maml:section>
+            <maml:section xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+              <maml:title>Note:</maml:title>
+              <maml:para>
+                This is an adaptation of an original MP located here:
+                <maml:navigationLink>
+                  <maml:linkText>https://blogs.msdn.microsoft.com/steverac/2010/12/04/focusing-on-the-printer-printer-monitoring-mp-supplement/</maml:linkText>
+                  <maml:uri href="https://blogs.msdn.microsoft.com/steverac/2010/12/04/focusing-on-the-printer-printer-monitoring-mp-supplement/" />
+                </maml:navigationLink>
+              </maml:para>
+            </maml:section>
+          </MamlContent>
+        </KnowledgeArticle>
+        <KnowledgeArticle ElementID="Simple.Windows.Printer.PrintServer.Role.Discovery" Visible="true">
+          <MamlContent>
+            <maml:section xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+              <maml:title>Summary</maml:title>
+              <maml:para>Discovers Windows Servers that are print servers.  </maml:para>
+              <maml:para>A Windows Server is determined to be a print server if:</maml:para>
+              <maml:list>
+                <maml:listItem>
+                  <maml:para>The Spooler service is running</maml:para>
+                </maml:listItem>
+                <maml:listItem>
+                  <maml:para>There are one or more shared printers in Win32_Printer</maml:para>
+                </maml:listItem>
+              </maml:list>
+            </maml:section>
+          </MamlContent>
+        </KnowledgeArticle>
+        <KnowledgeArticle ElementID="Simple.Windows.Printer.PrintServer.Printer.Discovery" Visible="true">
+          <MamlContent>
+            <maml:section xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+              <maml:title>Summary</maml:title>
+              <maml:para>Discovers shared printers on a Windows Server Print Server.</maml:para>
+              <maml:para>This discovery will retrieve shared printers and populate the following attributes:</maml:para>
+              <maml:list>
+                <maml:listItem>
+                  <maml:para>PrinterName</maml:para>
+                </maml:listItem>
+                <maml:listItem>
+                  <maml:para>PrintServerHost</maml:para>
+                </maml:listItem>
+                <maml:listItem>
+                  <maml:para>PortName</maml:para>
+                </maml:listItem>
+                <maml:listItem>
+                  <maml:para>Location</maml:para>
+                </maml:listItem>
+                <maml:listItem>
+                  <maml:para>Model</maml:para>
+                </maml:listItem>
+              </maml:list>
+            </maml:section>
+          </MamlContent>
+        </KnowledgeArticle>
+        <KnowledgeArticle ElementID="Simple.Windows.Printer.SpoolerService.Monitor" Visible="true">
+          <MamlContent>
+            <maml:section xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+              <maml:title>Summary</maml:title>
+              <maml:para>Checks the state of the Print Spooler (spooler) Service on Windows Print Server</maml:para>
+            </maml:section>
+            <maml:section xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+              <maml:title>Causes</maml:title>
+              <maml:para>The Print Spooler Service may have been stopped by an administrator or it may have failed for other reasons.  Check the Windows System Event log for service related errors.</maml:para>
+            </maml:section>
+            <maml:section xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+              <maml:title>Resolutions</maml:title>
+              <maml:para>Restart the Print Spooler Service.</maml:para>
+            </maml:section>
+            <maml:section xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+              <maml:title>External Links</maml:title>
+              <maml:para>
+                <maml:navigationLink>
+                  <maml:linkText>Windows Printing</maml:linkText>
+                  <maml:uri href="https://docs.microsoft.com/en-us/troubleshoot/windows-server/printing/printing-overview"/>
+                </maml:navigationLink>
+              </maml:para>
+            </maml:section>
+          </MamlContent>
+        </KnowledgeArticle>
+        <KnowledgeArticle ElementID="Simple.Windows.Printer.PrintServer.Printer.Monitor" Visible="true">
+          <MamlContent>
+            <maml:section xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+              <maml:title>Summary</maml:title>
+              <maml:para>Checks the health state of individual shared printers on a print server.  This script queries Win32_Printer for shared printers and returns different error codes.  The error code contains an integer value representing the number of errors since the Print Server was last restarted.  </maml:para>
+              <maml:para>The specific error codes for this monitor may be enabled or disabled via override.  In addition, threshold values for a specific error code may be set higher to only generate an alert when an error has been repeated X times.</maml:para>
+              <maml:para>Note that the specific error codes reported are dependent on the printer manufacturer and model.  See the operators manual for the specific make and model of printer.</maml:para>
+            </maml:section>
+            <maml:section xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+              <maml:title>Causes</maml:title>
+              <maml:para>Check the error code that is returned by the printer.  Verify the health of the printer and provide corrective action if necessary (for example, adding toner or clearing a jammed feed).</maml:para>
+            </maml:section>
+            <maml:section xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+              <maml:title>Overrideable Parameters</maml:title>
+              <maml:table>
+                <maml:tableHeader>
+                  <maml:row>
+                    <maml:headerEntry>
+                      <maml:para>Parameter</maml:para>
+                    </maml:headerEntry>
+                    <maml:headerEntry>
+                      <maml:para>Default</maml:para>
+                    </maml:headerEntry>
+                    <maml:headerEntry>
+                      <maml:para>Comment</maml:para>
+                    </maml:headerEntry>
+                  </maml:row>
+                </maml:tableHeader>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>Interval Seconds</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>3600</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>Frequency (in seconds) with which to run the check.</maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>Unknown Error Detection Enabled</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>true</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>Enable unknown error detection.</maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>Unknown Error Detection Threshold</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>0</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para> </maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>Other Error Detection Enabled</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>true</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>Enable other error detection</maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>Other Error Detection Threshold</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>0</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para> </maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>No Error Error Detection</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>
+                      <maml:ui>false</maml:ui>
+                    </maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>Enable No Error Error detection (disabled by default)</maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>No Error Error Detection Threshold</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>0</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para> </maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>Low Paper Error Detection</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>
+                      <maml:ui>false</maml:ui>
+                    </maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>Enable Low Paper Error Detection (disabled by default)</maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>Low Paper Error Detection Threshold</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>0</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para> </maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>No Paper Error Detection</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>true</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>Enable No Paper Error Detection</maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>No Paper Error Detection Threshold</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>2</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para> </maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>Low Toner Error Detection</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>
+                      <maml:ui>false</maml:ui>
+                    </maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>Enable Low Toner Error Detection (disabled by default)</maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>Low Toner Error Detection Threshold</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>0</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para> </maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>Low Toner Error Detection</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>true</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>No Toner Error Detection Threshold</maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>No Toner Error Detection Threshold</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>2</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para> </maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>Door Open Error Detection</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>true</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>Enable Door Open Error Detection</maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>Door Open Error Detection</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>45</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para> </maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>Jammed Error Detection</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>true</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>Enable Jammed Feed Error Detection</maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>Jammed Error Detection Threshold</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>2</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para> </maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>Offline Error Detection</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>true</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>Enable Offline Error Detection</maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>Offline Error Detection Threshold</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>2</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para> </maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>Service Requested Error Detection</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>true</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>enable Service Requested Error Detection</maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>Service Requested Error Detection Threshold</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>15</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para> </maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>Output Bin Full Error Detection</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>
+                      <maml:ui>false</maml:ui>
+                    </maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>Enable Output Bin Full Error Detection</maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>Output Bin Full Error Detection (Threshold)</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>0</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para> </maml:para>
+                  </maml:entry>
+                </maml:row>
+                <maml:row>
+                  <maml:entry>
+                    <maml:para>Timeout (Seconds)</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para>900</maml:para>
+                  </maml:entry>
+                  <maml:entry>
+                    <maml:para> </maml:para>
+                  </maml:entry>
+                </maml:row>
+              </maml:table>
+            </maml:section>
+            <maml:section xmlns:maml="http://schemas.microsoft.com/maml/2004/10">
+              <maml:title>Resolutions</maml:title>
+              <maml:para>Check the specific error code for the printer.  Resolve the error code in accordance with the users guide.</maml:para>
+            </maml:section>
+          </MamlContent>
+        </KnowledgeArticle>
+
+      </KnowledgeArticles>
+    </LanguagePack>
+  </LanguagePacks>  
+</ManagementPackFragment>

@@ -1,0 +1,87 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{6a47d9c3-913a-45bc-a2d7-cfa7d4a8597e}</ProjectGuid>
+    <RootNamespace>Simple.Windows.Printer</RootNamespace>
+    <Name>Simple.Windows.Printer</Name>
+    <ManagementPackName>Simple.Windows.Printer</ManagementPackName>
+    <Version>1.0.0.0</Version>
+    <MpFrameworkVersion>v7.0.3</MpFrameworkVersion>
+    <MpFrameworkProfile>OM</MpFrameworkProfile>
+    <ProductVersion>1.1.0.0</ProductVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <GenerateSealed>True</GenerateSealed>
+    <Company>Microsoft</Company>
+    <Copyright>Copyright (c) Microsoft, 2021. All rights reserved.</Copyright>
+    <DelaySigning>False</DelaySigning>
+    <AssemblyOriginatorKeyFile>C:\Users\huscott\source\repos\abcd.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+    <DelaySigning>false</DelaySigning>
+    <Company>MyCompany</Company>
+    <Copyright>Copyright (c) MyCompany. All rights reserved.</Copyright>
+    <DelaySign>false</DelaySign>
+    <AssemblyOriginatorKeyFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Classes\Simple.Windows.Printer.Classes.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Discoveries\Simple.Windows.Printer.Discoveries.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Language packs\Simple.Windows.Printer.Language.en-us.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Monitors\Simple.Windows.Printer.Monitors.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Simple.Windows.Printer.Views.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ManagementPackReference Include="Microsoft.SystemCenter.Library">
+      <HintPath>C:\Program Files (x86)\System Center Visual Studio Authoring Extensions\References\OM2016\Microsoft.SystemCenter.Library.mp</HintPath>
+      <Alias>SC</Alias>
+      <MinVersion>7.0.8437.0</MinVersion>
+    </ManagementPackReference>
+    <ManagementPackReference Include="Microsoft.Windows.Library">
+      <HintPath>C:\Program Files (x86)\System Center Visual Studio Authoring Extensions\References\OM2016\Microsoft.Windows.Library.mp</HintPath>
+      <Alias>Windows</Alias>
+      <MinVersion>7.5.8501.0</MinVersion>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="Microsoft.Windows.Server.Library">
+      <HintPath>C:\Program Files (x86)\System Center Visual Studio Authoring Extensions\References\OM2016\Microsoft.Windows.Server.Library.mp</HintPath>
+      <Alias>MWSL</Alias>
+      <MinVersion>10.1.0.6</MinVersion>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="System.Health.Library">
+      <HintPath>C:\Program Files (x86)\System Center Visual Studio Authoring Extensions\References\OM2016\System.Health.Library.mp</HintPath>
+      <Alias>Health</Alias>
+      <MinVersion>7.0.8437.0</MinVersion>
+    </ManagementPackReference>
+    <ManagementPackReference Include="System.Library">
+      <HintPath>C:\Program Files (x86)\System Center Visual Studio Authoring Extensions\References\OM2016\System.Library.mp</HintPath>
+      <Alias>System</Alias>
+      <MinVersion>7.5.8501.0</MinVersion>
+    </ManagementPackReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Classes" />
+    <Folder Include="Monitors" />
+    <Folder Include="Language packs" />
+    <Folder Include="Discoveries" />
+    <Folder Include="Views" />
+    <Folder Include="Rules" />
+    <Folder Include="Tasks" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VSAC\Microsoft.SystemCenter.OperationsManager.targets" />
+</Project>
