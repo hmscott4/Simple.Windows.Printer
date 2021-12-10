@@ -17,7 +17,7 @@
     <Company>Microsoft</Company>
     <Copyright>Copyright (c) Microsoft, 2021. All rights reserved.</Copyright>
     <DelaySigning>False</DelaySigning>
-    <AssemblyOriginatorKeyFile>C:\Users\huscott\source\repos\abcd.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>C:\Source\Repos\Simple.Windows.Printer\simple.windows.printer.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DebugSymbols>false</DebugSymbols>
