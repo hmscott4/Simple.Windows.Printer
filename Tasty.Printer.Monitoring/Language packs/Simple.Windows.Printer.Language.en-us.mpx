@@ -184,10 +184,6 @@
           <Name>No Paper Error Detection Threshold</Name>
           <Description>No Paper Error Detection Threshold Value</Description>
         </DisplayString>
-        <DisplayString ElementID="Simple.Windows.Printer.PrintServer.Role" SubElementID="DisplayName">
-          <Name>Windows Print Server Role</Name>
-          <Description>Windows Server Print Server</Description>
-        </DisplayString>
         <DisplayString ElementID="Simple.Windows.Printer.PrinterStateCheck.PA">
           <Name>Windows Printer Printer State Check PA</Name>
           <Description>Windows Printer Printer State Check</Description>
